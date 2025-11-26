@@ -39,7 +39,13 @@ A beautiful, modern web application to view your Last.fm listening statistics. C
    cd lastfm-stats-dashboard
    ```
 
-2. No build process or dependencies required! This is a pure HTML/CSS/JavaScript application.
+2. (Optional) Configure your API key for easier access:
+   ```bash
+   cp config.example.js config.js
+   ```
+   Then edit `config.js` and add your Last.fm API key and username. This will pre-fill the connection form.
+
+3. No build process or dependencies required! This is a pure HTML/CSS/JavaScript application.
 
 ### Running the Application
 
@@ -66,8 +72,8 @@ You can use any local web server of your choice, or simply open the `index.html`
 ### Using the Dashboard
 
 1. **Connect Your Account**:
-   - Enter your Last.fm username
-   - Paste your API key
+   - Enter your Last.fm username (pre-filled if you configured `config.js`)
+   - Paste your API key (pre-filled if you configured `config.js`)
    - Click "Connect"
 
 2. **Explore Your Stats**:

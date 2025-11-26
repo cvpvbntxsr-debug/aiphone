@@ -93,11 +93,24 @@ class Dashboard {
 
     init() {
         this.setupEventListeners();
+        this.loadConfigDefaults();
 
         // Check if user is already logged in
         if (this.api.loadCredentials()) {
             this.showStats();
             this.loadAllData();
+        }
+    }
+
+    loadConfigDefaults() {
+        // Pre-fill form with config values if available
+        if (typeof CONFIG !== 'undefined') {
+            if (CONFIG.apiKey && CONFIG.apiKey !== 'YOUR_API_KEY_HERE') {
+                document.getElementById('apiKey').value = CONFIG.apiKey;
+            }
+            if (CONFIG.username && CONFIG.username !== 'YOUR_USERNAME_HERE') {
+                document.getElementById('username').value = CONFIG.username;
+            }
         }
     }
 
