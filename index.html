@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Last.fm Stats Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎵 Last.fm Stats Dashboard</h1>
+            <p class="subtitle">Connect your Last.fm account to view your listening statistics</p>
+        </header>
+
+        <div class="connection-section" id="connectionSection">
+            <div class="card">
+                <h2>Connect to Last.fm</h2>
+                <form id="connectionForm">
+                    <div class="form-group">
+                        <label for="username">Last.fm Username</label>
+                        <input type="text" id="username" placeholder="Enter your username" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="apiKey">API Key</label>
+                        <input type="text" id="apiKey" placeholder="Enter your Last.fm API key" required>
+                        <small>Get your API key from <a href="https://www.last.fm/api/account/create" target="_blank">Last.fm API</a></small>
+                    </div>
+                    <button type="submit" class="btn-primary">Connect</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="stats-section hidden" id="statsSection">
+            <div class="user-header">
+                <div class="user-info">
+                    <img id="userAvatar" src="" alt="User avatar" class="avatar">
+                    <div>
+                        <h2 id="displayName"></h2>
+                        <p id="userStats"></p>
+                    </div>
+                </div>
+                <button id="disconnectBtn" class="btn-secondary">Disconnect</button>
+            </div>
+
+            <div class="tabs">
+                <button class="tab-btn active" data-tab="overview">Overview</button>
+                <button class="tab-btn" data-tab="artists">Top Artists</button>
+                <button class="tab-btn" data-tab="tracks">Top Tracks</button>
+                <button class="tab-btn" data-tab="albums">Top Albums</button>
+                <button class="tab-btn" data-tab="recent">Recent Tracks</button>
+            </div>
+
+            <div class="tab-content">
+                <div id="overview" class="tab-pane active">
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <h3>Total Scrobbles</h3>
+                            <p class="stat-number" id="totalScrobbles">-</p>
+                        </div>
+                        <div class="stat-card">
+                            <h3>Member Since</h3>
+                            <p class="stat-number" id="memberSince">-</p>
+                        </div>
+                        <div class="stat-card">
+                            <h3>Country</h3>
+                            <p class="stat-number" id="country">-</p>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <h3>Quick Stats</h3>
+                        <div id="quickStats" class="quick-stats"></div>
+                    </div>
+                </div>
+
+                <div id="artists" class="tab-pane">
+                    <div class="period-selector">
+                        <button class="period-btn active" data-period="7day">7 Days</button>
+                        <button class="period-btn" data-period="1month">1 Month</button>
+                        <button class="period-btn" data-period="3month">3 Months</button>
+                        <button class="period-btn" data-period="6month">6 Months</button>
+                        <button class="period-btn" data-period="12month">12 Months</button>
+                        <button class="period-btn" data-period="overall">All Time</button>
+                    </div>
+                    <div id="topArtists" class="items-list"></div>
+                </div>
+
+                <div id="tracks" class="tab-pane">
+                    <div class="period-selector">
+                        <button class="period-btn active" data-period="7day">7 Days</button>
+                        <button class="period-btn" data-period="1month">1 Month</button>
+                        <button class="period-btn" data-period="3month">3 Months</button>
+                        <button class="period-btn" data-period="6month">6 Months</button>
+                        <button class="period-btn" data-period="12month">12 Months</button>
+                        <button class="period-btn" data-period="overall">All Time</button>
+                    </div>
+                    <div id="topTracks" class="items-list"></div>
+                </div>
+
+                <div id="albums" class="tab-pane">
+                    <div class="period-selector">
+                        <button class="period-btn active" data-period="7day">7 Days</button>
+                        <button class="period-btn" data-period="1month">1 Month</button>
+                        <button class="period-btn" data-period="3month">3 Months</button>
+                        <button class="period-btn" data-period="6month">6 Months</button>
+                        <button class="period-btn" data-period="12month">12 Months</button>
+                        <button class="period-btn" data-period="overall">All Time</button>
+                    </div>
+                    <div id="topAlbums" class="items-list"></div>
+                </div>
+
+                <div id="recent" class="tab-pane">
+                    <div id="recentTracks" class="items-list"></div>
+                </div>
+            </div>
+
+            <div class="loading hidden" id="loading">
+                <div class="spinner"></div>
+                <p>Loading...</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
